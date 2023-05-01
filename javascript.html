@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>filimo</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background: black;
+                margin: 0;
+                padding: 0;
+            }
+            .wrapper {
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+                text-align: center;
+            }
+            p {
+                color: white;
+            }
+            #section1{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            button {
+                width: 100%;
+                background-color: transparent;
+                cursor: pointer;
+                overflow: hidden;
+                color: aliceblue;
+            }
+            .header {
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 20px;
+                padding-top: 20px;
+                background-color: #282828;
+                height: 50vh;
+                
+            }
+             p#information {
+                height: 0;
+                margin: 0;
+                visibility: hidden;
+                transition: all 2s;
+            }
+            .active #section1 :nth-child(2) {
+                color: yellow;
+            }
+            #button1.active p#information {
+                visibility: visible;
+                height: auto;
+
+            }
+            div.calculater p {
+                display: inline-block;
+            }
+            p#result {
+                background-color: aliceblue;
+                width: 20%;
+                height: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div id="part1">
+                <div class="wrapper">
+                    <button id="button1"onclick="information()">
+                        <div id="section1">
+                            <p id="p1">+</p>
+                            <p>فیلم جهان با من برقص اولین اثر سروش صحت است؟</p>
+                        </div>
+                        <div id="div">
+                            <div>
+                                <p id="information">بله این فیلم اولین ساخته سینمایی سروش صحت است.</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="calculater">
+            <input type="text" id="inter1">
+            <select id="cars">
+                <option id="jam"value="+">+</option>
+                <option id="taghsim"value="/">/</option>
+                <option id="zarb"value="*">x</option>
+                <option id="manfi"value="-">-</option>
+              </select>
+              <input type="text" id="inter2">
+              <p>=</p>
+              <p id="result"></p>
+              <button id="calculate" onclick="mohasebe()"> click me to calculating</button>
+        </div>
+            
+        <script>
+            function information() {
+                var status = document.getElementById("button1");
+                status.classList.toggle("active")
+            }
+            function mohasebe() {
+                var input1 = document.getElementById("inter1");
+            var selection = document.getElementById("cars");
+            var input2 = document.getElementById("inter2")
+            var result = document.getElementById("result")
+            var jam = document.getElementById("jam")
+            var total = parseInt(input1.value) + parseInt(input2.value);
+                result.innerHtml = total;
+                input1.value =""
+                input2.value = ""
+            }
+            var fosh = "kheili adam bishori hasti"
+            console.log(fosh.replace("bishori" , "khobi"))
+        </script>
+    </body>
+</html>
