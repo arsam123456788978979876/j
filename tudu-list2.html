@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <style>
+            .active {
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="input">
+        <button id="add">add</button>
+        <ul id="tasks"></ul>
+        <script>
+            var input = document.getElementById("input");
+            var addButton = document.getElementById("add");
+            var tasks = document.getElementById("tasks")
+            addButton.addEventListener("click" , addTask)
+            function addTask() {
+                if (input.value.trim() !== ""){
+                    if(input.value.length >=3){
+                        var li =document.createElement("li")
+                        li.innerHTML = input.value
+                        tasks.appendChild(li)
+                        var removeBtn = document.createElement("span")
+                        removeBtn.innerHTML = "x"
+                        removeBtn.addEventListener("click" , removeTask)
+                        function removeTask(){
+                            li.remove()
+                        }
+                        li.addEventListener("click" , completeTrigger)
+                        function completeTrigger() {
+                            li.classList.toggle("active")
+                        }
+                        li.appendChild(removeBtn)
+                        input.value = ""
+                        } else {
+                            alert("minimum 3 text")
+                        }
+                        } else {
+                        alert("please enter the the text")
+                        } 
+            }
+            input.addEventListener("keypress" , onEnter)
+            function onEnter(event){
+                if(event.keyCode ===13){
+                    addTask()
+                }
+            }
+        </script>
+    </body>
+</html>
