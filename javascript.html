@@ -40,15 +40,13 @@
                 height: 0;
                 margin: 0;
                 visibility: hidden;
-                transition: all 2s;
             }
             .active #section1 :nth-child(2) {
                 color: yellow;
             }
             #button1.active p#information {
                 visibility: visible;
-                height: auto;
-
+                height: 50px;
             }
             div.calculater {
                 display: flex;
@@ -83,7 +81,7 @@
         </div>
         <div class="calculater">
             <input id="inter1">
-            <select id="cars">
+            <select id="operator">
                 <option value="+">+</option>
                 <option value="/">/</option>
                 <option value="*">x</option>
@@ -95,35 +93,30 @@
         </div>
             
         <script>
-            function information() {
-                var status = document.getElementById("button1");
-                status.classList.toggle("active")
+            console.log(Math.PI.toFixed(2))
+            console.log(Math.floor(4.8))
+            console.log(Math.random())
+           var inter1 = document.getElementById("inter1");
+           var inter2 = document.getElementById("inter2");
+           var operator = document.getElementById("operator");
+           var button = document.getElementById("calculate"); 
+           var result = document.getElementById("result")
+           button.addEventListener("click" , calculate);
+           function calculate(){
+            if (operator.value === "+"){
+                result.innerHTML = parseFloat(inter1.value) + parseFloat(inter2.value)
+            } else if (operator.value === "*"){
+                result.innerHTML = parseFloat(inter1.value) * parseFloat(inter2.value)
+            }else if(operator.value === "-"){
+                result.innerHTML = parseFloat(inter1.value) - parseFloat(inter2.value)
+            } else if (operator.value === "/"){
+                result.innerHTML = (parseFloat(inter1.value) / parseFloat(inter2.value)).toFixed(4)
             }
-            var input1 = document.getElementById("inter1");
-            var selection = document.getElementById("cars");
-            var input2 = document.getElementById("inter2")
-            var result = document.getElementById("result")
-            var calculate = document.getElementById("calculate")
-            var cl = document.getElementById("cl")
-            calculate.addEventListener("click" , calculation);
-            function calculation(cl){
-                if (selection.value ==="+") {
-                    result.InnerHtml = parseInt(input1.value) + parseInt(input2.value);
-                }
-                else if(selection.value ==="-"){
-                    result.InnerHtml = input1.value - input2.value;
-                }
-                else if(selection.value === "/"){
-                    result.InnerHtml = input1.value / input2.value;
-                }
-                else if(selection.value === "x"){
-                    result.InnerHtml = input1.value * input2.value;
-                }
-                
-            }
-
-            var fosh = "kheili adam bishori hasti"
-            console.log(fosh.replace("bishori" , "khobi"))
+           }
+           function randomFunction(a , b){
+            
+           }
+           randomFunction(0 , 100)
         </script>
     </body>
 </html>
